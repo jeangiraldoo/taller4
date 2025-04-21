@@ -7,7 +7,7 @@ package object Anagramas {
   val diccionario : List[Palabra] = List("cosas", "como","yo", "y", "ocasos","cayo", "mocosos","roca","moco","sos")
 
   def lOcpal(p: Palabra): Ocurrencias = {
-    val chars = p.toList
+    val chars = p.toList.sorted
     chars.distinct.map(c => (c, chars.filter(_ == c).length))
   }
 
@@ -16,5 +16,7 @@ package object Anagramas {
     lOcpal(palabra)
   }
 
-
+  lazy val diccionarioPorOcurrencias: Map[Ocurrencias, List[Palabra]] = {
+    diccionario.groupBy(palabra => lOcpal(palabra))
+  }
 }
