@@ -19,4 +19,9 @@ package object Anagramas {
   lazy val diccionarioPorOcurrencias: Map[Ocurrencias, List[Palabra]] = {
     diccionario.groupBy(palabra => lOcpal(palabra))
   }
+
+  def anagramasDePalabra(palabra: Palabra): List[Palabra] = {
+    val ocurrenciasPalabra = lOcpal(palabra)
+      diccionarioPorOcurrencias(ocurrenciasPalabra)
+  }
 }
