@@ -45,16 +45,13 @@ package object Anagramas {
     combinaciones
   }
 
-  def complemento(listaOcurrencias: Ocurrencias, sublistaOcurrencias: Ocurrencias) : Ocurrencias = {
-    listaOcurrencias.map {
-      case (char, num) =>
-        if (sublistaOcurrencias.exists(_._1 == char)) {
-          val subCantidad = sublistaOcurrencias.find(_._1 == char).map(_._2).getOrElse(0)
-          (char, num - subCantidad)
-        } else {
-          (char, num)
-        }
-    }.filter(_._2 > 0)
+  def complemento(listaOcurrencias: Ocurrencias, sublistaOcurrencias: Ocurrencias): Ocurrencias = {
+    for {
+      (char, num) <- listaOcurrencias
+      subCantidad = sublistaOcurrencias.find(_._1 == char).map(_._2).getOrElse(0)
+      nuevaCantidad = num - subCantidad
+      if nuevaCantidad > 0
+    } yield (char, nuevaCantidad)
   }
 
   def anagramasDeFrase(frase: Frase): List[Frase] = {
