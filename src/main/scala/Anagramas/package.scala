@@ -43,7 +43,17 @@ package object Anagramas {
       } yield combinacion
 
     combinaciones
+  }
 
-
+  def complemento(listaOcurrencias: Ocurrencias, sublistaOcurrencias: Ocurrencias) : Ocurrencias = {
+    listaOcurrencias.map {
+      case (char, num) =>
+        if (sublistaOcurrencias.exists(_._1 == char)) {
+          val subCantidad = sublistaOcurrencias.find(_._1 == char).map(_._2).getOrElse(0)
+          (char, num - subCantidad)
+        } else {
+          (char, num)
+        }
+    }.filter(_._2 > 0)
   }
 }
