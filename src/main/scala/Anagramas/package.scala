@@ -7,8 +7,7 @@ package object Anagramas {
   val diccionario : List[Palabra] = List("cosas", "como","yo", "y", "ocasos","cayo", "mocosos","roca","moco","sos")
 
   def lOcpal(p: Palabra): Ocurrencias = {
-    val chars = p.toList.sorted
-    chars.distinct.map(c => (c, chars.filter(_ == c).length))
+    p.groupBy(identity).map { case (c, cs) => (c, cs.length) }.toList.sortBy(_._1)
   }
 
   def lOcFrase(f: Frase): Ocurrencias = {
