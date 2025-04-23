@@ -56,4 +56,22 @@ package object Anagramas {
         }
     }.filter(_._2 > 0)
   }
+
+  def anagramasDeFrase(frase: Frase): List[Frase] = {
+    val ocurrenciasFrase: Ocurrencias = lOcFrase(frase)
+
+    def anagramas(ocurrencias: Ocurrencias): List[Frase] = ocurrencias match {
+      case Nil => List(Nil)
+      case _ =>
+        for {
+          combinacion <- combinaciones(ocurrencias)
+          palabras <- diccionarioPorOcurrencias.getOrElse(combinacion, Nil)
+          resto = complemento(ocurrencias, combinacion)
+          fraseResto <- anagramas(resto)
+        } yield palabras :: fraseResto
+    }
+
+    anagramas(ocurrenciasFrase)
+  }
+
 }
