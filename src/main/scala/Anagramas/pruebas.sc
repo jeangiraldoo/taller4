@@ -25,6 +25,28 @@ def anagramasDePalabra(palabra: Palabra) = {
   diccionarioPorOcurrencias(ocurrenciasPalabra)
 }
 
+def combinaciones(listaOcurrencias: Ocurrencias): List[Ocurrencias] = {
+  val opcionesPorLetra: List[List[Ocurrencias]] = listaOcurrencias.map {
+    case (char, max) =>
+      (1 to max).map(n => List((char, n))).toList :+ Nil
+  }
+
+  val combinaciones: List[Ocurrencias] =
+    for {
+      combinacion <- opcionesPorLetra.foldRight(List[List[(Char, Int)]](Nil)) {
+        (opcionesLetra, acumulador) =>
+          for {
+            opcion <- opcionesLetra
+            combinacionPrevia <- acumulador
+          } yield opcion ++ combinacionPrevia
+      }
+    } yield combinacion
+
+  combinaciones
+}
+
 diccionarioPorOcurrencias
 
 anagramasDePalabra("sos")
+
+combinaciones(List(('a', 2), ('b', 2)))
