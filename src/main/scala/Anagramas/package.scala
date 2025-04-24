@@ -4,7 +4,11 @@ package object Anagramas {
   type Frase = List[Palabra]
   type Ocurrencias = List[(Char, Int)]
 
-  val diccionario: List[Palabra] = List("amar", "rama", "mar", "ama", "correr", "cerro", "error", "roer", "creer")
+  //val diccionario : List[Palabra] = List("cosas", "como","yo", "y", "ocasos","cayo", "mocosos","roca","moco","sos") // diccionario para el caso 1
+
+  // val diccionario: List[Palabra] = List("amar", "rama", "mar", "ama", "correr", "cerro", "error", "roer", "creer") // diccionario para el caso 2
+
+  val diccionario: List[Palabra] = List("ratón", "tornar", "norte", "terno", "nota", "tona", "ron", "trono", "arte", "reta")
 
   def lOcpal(p: Palabra): Ocurrencias = {
     p.groupBy(identity).map { case (c, cs) => (c, cs.length) }.toList.sortBy(_._1)
