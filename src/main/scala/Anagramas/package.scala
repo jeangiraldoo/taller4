@@ -6,7 +6,7 @@ package object Anagramas {
 
   //val diccionario : List[Palabra] = List("cosas", "como","yo", "y", "ocasos","cayo", "mocosos","roca","moco","sos") // diccionario para el caso 1
 
-  // val diccionario: List[Palabra] = List("amar", "rama", "mar", "ama", "correr", "cerro", "error", "roer", "creer") // diccionario para el caso 2
+  // val diccionario: List[Palabra] = List("amar", "rama", "mar", "ama", "correr", "cerro", "error", "roer", "creer") // diccionario para el caso 2 y 3
 
   val diccionario: List[Palabra] = List("ratón", "tornar", "norte", "terno", "nota", "tona", "ron", "trono", "arte", "reta")
 
