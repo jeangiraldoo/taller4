@@ -27,6 +27,20 @@ import Anagramas._
 //
 //anagramasDeFrase(List("y", "cosas")) // List(List(cosas, y), List(y, cosas))
 
+// Caso propio 2
+
+// lOcpal("amar") // List(('a',2), ('m',1), ('r',1))
+
+// lOcFrase(List("amar", "mar"))  // List(('a',3), ('m',2), ('r',2))
+
+// anagramasDePalabra("amar") // List(List("amar"), List("rama"))
+
+// combinaciones(List(('a',2), ('m',2), ('r',2))) // List(List(), List(('a',1)), List(('a',2)), ..., List(('a',2), ('m',2), ('r',2))) ....
+
+// complemento(List(('a',2), ('m',2), ('r',2)), List(('a',1), ('m',1))) // List(('a',1), ('m',1), ('r',2))
+
+// anagramasDeFrase(List("amar", "mar")) // List(List("amar", "mar"),List(mar, amar), List(mar, rama), List("rama", "mar"))
+
 // Caso propio 3
 
 //lOcpal("error") // List((e,1), (o,1), (r,3))
